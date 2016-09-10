@@ -31,9 +31,15 @@ eve102_data <- function(id=NULL) {
   data$path  <- sapply(data$file, function(x) 
                        system.file("extdata", x, package='eve102'))
   if (!is.null(id)) {
-    if (!is.numeric(id) || id > length(files) || id < 0)
-      stop(sprintf("'id' must be a number between 1 and %d.", length(files)))
-    return(data$path[id])
+    if (is.numeric(id)) {
+      if (id > length(files) || id < 0)
+        stop(sprintf("'id' must be a number between 1 and %d.", length(files)))
+      return(data$path[id])
+    } else if (is.character(id)) {
+      i <- id == files
+      if (!any(i)) stop("no file matching this 'id' found.")
+      return(data$path[i])
+    }
   }
   data[, -4]
 }

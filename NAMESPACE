@@ -3,3 +3,4 @@
 export(eve102_data)
 export(eve102_status)
 export(eve102_update)
+export(tutorials)

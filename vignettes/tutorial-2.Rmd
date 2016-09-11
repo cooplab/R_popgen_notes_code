@@ -1,0 +1,55 @@
+---
+title: "EVE102 R Tutorial, Part II"
+author: "Vince Buffalo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup0, include=FALSE}
+knitr::opts_chunk$set(prompt=FALSE, comment="")
+```
+
+### Distribution Functions
+
+**You may skip this section on a first read through, and come back to it later
+when you need these.**
+
+R has a family of functions for each probability distribution. The
+distributions we'll likely use in this course are:
+
+- Binomial distribution: `dbinom`, `pbinom`, `qbinom`, `rbinom`.
+- Gaussian or Normal distribution. `dnorm`, `pnorm`, `qnorm`, `rnorm`.
+- Exponential distribution. `dexp`, `pexp`, `qexp`, `rexp`.
+- Poisson distribution. `dpois`, `ppois`, `qpois`, `rpois`.
+- Chi-Square distribution. `dchisq`, `pchisq`, `qchisq`, `rchisq`.
+
+Note that each of these distributions has four R functions. For example, for
+the Poisson distribution (which has one parameter, `lambda`) these are:
+
+1. `dpois(x, lambda)`: the probability density.
+2. `ppois(x, lambda)`: the probability distribution, e.g. the density
+   integrated (or summed) from -Infinity to x, giving the probability of values
+   less extreme than `x`.
+3. `qpois(p, lambda)`: the quantile function, which returns the quantile for a supplied probability `p`.
+4. `rpois(n, lambda)`: return `n` random samples from a Poisson distribution.
+
+When sampling random variables, it's sometimes useful to set the random seed.
+Random numbers are sampled from a **pseudo random number generator**; the
+pseudo means these aren't truly random as setting the seed ensures the same
+sequence of random numbers can be generated. For example:
+
+```{R}
+set.seed(3)
+rnorm(10)
+set.seed(3)
+rnorm(10)
+set.seed(4)  # set seed for different sequence of numbers
+rnorm(10)
+```
+
+Note the same sequence is returned once we set the seed to the same seed.
+

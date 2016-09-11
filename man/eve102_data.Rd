@@ -4,11 +4,13 @@
 \alias{eve102_data}
 \title{Retrieve a list of all datasets, or the path of a specific dataset}
 \usage{
-eve102_data(id = NULL)
+eve102_data(id = NULL, include_raw = FALSE)
 }
 \arguments{
 \item{id}{the \code{id} to specify which dataset to return the filepath to.
 With no argument supplied, this returns a dataframe of all datasets.}
+
+\item{include_raw}{whether to include the raw files.}
 }
 \description{
 When run without arguments, this function returns a list of all datasets in

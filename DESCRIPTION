@@ -10,5 +10,8 @@ License: BSD
 Encoding: UTF-8
 LazyData: true
 Imports: devtools
-Suggests: tidyr
+Suggests: tidyr,
+    knitr,
+    rmarkdown
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr

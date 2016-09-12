@@ -29,7 +29,7 @@ in different places, so to find the file path to the data, use the function
 `eve102_data()`. Calling this function without arguments returns all datasets:
 
 ```R
-library(eve102)
+> library(eve102)
 > eve102_data()
   id                 file                                     description
 1  1     CEU_10000.txt.gz             10,000 HapMap SNPs, CEU individuals

@@ -1,5 +1,24 @@
 ## EVE102 R Package: R Course Materials for Population Genetics
 
+## Accessing the R Tutorials
+
+The R tutorials for this course are contained in this package. These will open
+the R tutorials in your default browser. To browse all tutorials, use:
+
+```R
+library(eve102)
+tutorials()
+```
+
+Then, click the "HTML" link for the tutorial you wish to read.
+
+Specific tutorials can be accessed by providing a tutorial number. For example,
+to access the first tutorial, use:
+
+```R
+tutorials(1)
+```
+
 ## Working with the EVE102 Datasets
 
 This package contains all of the data you will need for the exercises in this

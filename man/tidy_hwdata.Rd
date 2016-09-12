@@ -4,7 +4,7 @@
 \alias{tidy_hwdata}
 \title{Tidy up raw genptype data from PLINK (internal function)}
 \usage{
-tidy_hwdata(file)
+tidy_hwdata(file, flip = TRUE)
 }
 \description{
 For extracting the genotype counts from the original raw data from PLINK.
@@ -12,14 +12,11 @@ For extracting the genotype counts from the original raw data from PLINK.
 \examples{
 \dontrun{
  # this is how tidy versions were created (run in package dir)
- rawfiles <- c(CEU_10000="CEU_10000.hw.gz", 
-               CEU_YRI_10000="CEU_YRI_10000.hw.gz",
-               YRI_10000="YRI_10000.hw.gz")
- files <- sapply(rawfiles, eve102_data)
+ files <- sapply(RAWFILES, eve102_data, include_raw=TRUE)
  for (i in seq_along(files)) {
-   outfile <- file.path("inst", "extdata", paste0(names(files)[i], ".gz"))
+   outfile <- file.path("inst", "extdata", paste0(names(files)[i], ".txt.gz"))
    outcon <- gzfile(outfile, "w")
-   write.table(tidy_hwdata(eve102_data(basename(files[i]))), 
+   write.table(tidy_hwdata(file.path("inst", "extdata", basename(files[i]))), 
                file=outcon, sep="\\t", quote=FALSE, row.names=FALSE)
    close(outcon)
  }

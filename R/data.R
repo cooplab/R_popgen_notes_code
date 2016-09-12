@@ -24,7 +24,7 @@ eve102_data <- function(id=NULL, include_raw=FALSE) {
 
   # Registry of files with descriptions (TODO: can go to TSV file in
   # inst/extdata later)
-  files <- c("CEU_10000.gz", "CEU_YRI_10000.gz", "YRI_10000.gz")
+  files <- c("CEU_10000.txt.gz", "CEU_YRI_10000.txt.gz", "YRI_10000.txt.gz")
   desc <- c(
             "            10,000 HapMap SNPs, CEU individuals",
             "    10,000 HapMap SNPs, CEU and YRI individuals",

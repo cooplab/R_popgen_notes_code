@@ -9,8 +9,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup0, include=FALSE}
-knitr::opts_chunk$set(prompt=FALSE, comment="")
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(prompt=FALSE, comment="", fig.width=6, fig.height=6)
 ```
 
 R is a programming language designed for statistical computing. It allows you
@@ -330,7 +330,7 @@ check vector types with `typeof()`**. For example, if you accidentally try to
 concatenate a character vector with a numeric vector, everything becomes a
 character vector. An example of this problem is:
 
-```{R}
+```{R, error=TRUE}
 a <- c(1, 4, 2)
 b <- c("43")
 d <- c(a, b)
@@ -719,36 +719,22 @@ the data, use the function `eve102_data()`. Calling this function without
 arguments returns all datasets:
 
 ```R
-> library(eve102)
-> eve102_data()
-  id                 file                                     description
-1  1     CEU_10000.txt.gz             10,000 HapMap SNPs, CEU individuals
-2  2 CEU_YRI_10000.txt.gz     10,000 HapMap SNPs, CEU and YRI individuals
-3  3     YRI_10000.txt.gz             10,000 HapMap SNPs, YRI individuals
->
+library(eve102)
+eve102_data()
 ```
 
 Then, you can get the file path for one of these files by calling the
 `eve102_data()` function, providing the filename you wish to get the path to:
 
 ```R
-> eve102_data("CEU_10000.txt.gz")
-[1] "/usr/local/lib/R/3.3/site-library/eve102/extdata/CEU_10000.txt.gz"
+eve102_data("CEU_10000.txt.gz")
 ```
 
 This can then be used to load data in with R's `read.table()` function (since
 this is in tab-separated value format).
 
 ```R
-> d <- read.table(eve102_data("CEU_10000.txt.gz"), header=TRUE)
-> head(d)
-  chr           snp allele_A allele_a AA Aa aa  freq total
-1   1 SNP_A-1909444        T        C 40 19  1 0.825    60
-2   1 SNP_A-2237149        0        G  0  0 60 0.000    60
-3   1 SNP_A-4303947        A        G 45 15  0 0.875    60
-4   1 SNP_A-1886933        T        C  0 15 45 0.125    60
-5   1 SNP_A-2236359        A        0 60  0  0 1.000    60
-6   1 SNP_A-2205441        0        C  0  0 60 0.000    60
+d <- read.table(eve102_data("CEU_10000.txt.gz"), header=TRUE)
 ```
 
 By default, R turns all character vectors from a data file into *factors* when
@@ -840,6 +826,43 @@ plot(d$freq, d$Aa/d$total, pch=19, cex=0.5, col="dark green",
 
 ### Overlaying points and lines on top of plots
 
+We can add additional features to our plot by calling other plotting functions.
+We cannot do this with the `plot()` function, however, since this redraws
+everything. Instead, we have to call the function `points()` (to add additional
+points) or `lines()` to add a line. `points()` behaves identically to `plot()`,
+so we won't discuss it much here. Here's one quick example of using `points()`
+to add the genotype frequency of the AA allele:
 
+```{R}
+plot(d$freq, d$Aa/d$total, pch=19, cex=0.5, col="dark green",
+     ylim=c(0, 1), xlim=c(0, 1), xlab="allele frequency",
+     ylab="heterozygote frequency")
+points(d$freq, d$AA/d$total, pch=19, cex=0.5, col="dark blue")
+```
+
+To use `lines()`, we pass the points to connect up with a line. To plot a
+curve, we create a set of close points that when connected approximate the
+exact curve. For example, let's plot the expected Hardy-Weinberg frequency of
+the heterozygote genotype to our plot. First, we create a sequence of allele
+frequencies from 0 to 1 using the `seq()` function, which takes a `from` and
+`to` argument. We want this sequence to be finally spaced, so we specify that
+we want 1,000 elements out, using the `length.out` argument:
+
+```{R}
+x <- seq(0, 1, length.out=1000)
+head(x)  # take a look at what seq() returns
+```
+
+Then, we use `lines()` to plot these `x` values and the expected frequency of
+heterozygotes under Hardy-Weinberg (I will redo entire plot for clarity, see
+`lines()` at end). Note that to make the line thicker, I use `lwd=3` (line
+width) and I specify the line type should be dashed with `lty=2`:
+
+```{R}
+plot(d$freq, d$Aa/d$total, pch=19, cex=0.5, col="dark green",
+     ylim=c(0, 1), xlim=c(0, 1), xlab="allele frequency",
+     ylab="heterozygote frequency")
+lines(x, 2*x*(1-x), lty=2, lwd=3, col="purple")
+```
 
 

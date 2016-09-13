@@ -24,19 +24,17 @@ eve102_data <- function(id=NULL, include_raw=FALSE) {
 
   # Registry of files with descriptions (TODO: can go to TSV file in
   # inst/extdata later)
-  files <- c("CEU_10000.txt.gz", "CEU_YRI_10000.txt.gz", "YRI_10000.txt.gz")
-  desc <- c(
-            "            10,000 HapMap SNPs, CEU individuals",
-            "    10,000 HapMap SNPs, CEU and YRI individuals",
-            "            10,000 HapMap SNPs, YRI individuals")
-  if (include_raw) {
-    files <- c(files, "CEU_10000.hw.gz", "CEU_YRI_10000.hw.gz", "YRI_10000.hw.gz")
-    desc <- c(desc, paste0(desc, ", raw"))
+  data <- read.table(system.file('extdata', 'index.txt', package='eve102'),
+                     header=TRUE, sep='\t')
+  if (!include_raw) {
+    data <- data[!data$raw, ]
   }
-  ids = seq_along(files)
-  data <- data.frame(id=ids, file=files, description=desc, stringsAsFactors=FALSE)
+  data <- data[, -3]
+  data$ids <- seq_along(data$file)
+  data <- data[, c(3, 1, 2)]
   data$path  <- sapply(data$file, function(x) 
                        system.file("extdata", x, package='eve102'))
+  files <- data$file
   if (!is.null(id)) {
     if (is.numeric(id)) {
       if (id > length(files) || id < 0)

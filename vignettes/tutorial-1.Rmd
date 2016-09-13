@@ -37,6 +37,8 @@ First, we need to install R, RStudio, and a few R packages. Follow these steps:
 Archive Network" (CRAN): https://cran.cnr.berkeley.edu/. Download the version
 for your operating system using this link. Install R by double clicking the
 installer you've downloaded in the previous step and follow the instructions.
+CRAN is also how you install packages that extend R's functionality (more on
+this later).
 
 2. **Download and install RStudio**. RStudio is a program that makes
 interacting with and developing code in R *much* easier. Download RStudio
@@ -55,12 +57,12 @@ exact session will be different):
 
 <img src="images/rstudio.png" style="width: 600px;"/>
 
-3. Next, we need to install a few R packages. R packages are contributed
-software that extends the functionality of R. We will first install `devtools`,
-as this allows us to install the `eve102` course package from GitHub (GitHub is
-a website for sharing code and collaboratively working on projects). Then, we
-will load the `devtools` package with the `library()` function, and then
-install the `eve102`:
+3. Next, we need to install a few R packages from CRAN. R packages are
+contributed software that extends the functionality of R. We will first install
+`devtools`, as this allows us to install the `eve102` course package from
+GitHub (GitHub is a website for sharing code and collaboratively working on
+projects). Then, we will load the `devtools` package with the `library()`
+function, and then install the `eve102`:
 
 ```{R, eval=FALSE}
 install.packages('devtools')
@@ -86,19 +88,31 @@ explaining what you're doing. Here's how you do this:
     ---
 
     ```
-    Be sure to leave the "r setup" code block that follows this in the example RMarkdown file.
+
+    Be sure to leave the "r setup" code block that follows this in the example
+RMarkdown file. You may wish to make the default image size larger by replacing
+the contents of this code block with:
+
+
+    ```
+    knitr::opts_chunk$set(prompt=FALSE, comment="", fig.width=6, fig.height=6)
+    ```
 
 2. Then, press "knit HTML":
 
 <img src="images/knit.png" alt="knit HTML" style="width: 600px;"/>
 
 
-   This will run all code, show the results and plots, and generate an HTML file. This is how you should turn your homework in. You can use a raw R script too, but we prefer an RMarkdown file, as it allows you to more easily describe what you're doing.
+This will run all code, show the results and plots, and generate an HTML file.
+This is how you should turn your homework in. You can use a raw R script too,
+but we prefer an RMarkdown file, as it allows you to more easily describe what
+you're doing. **You will need to rerun knitr HTML repeatedly throughout your
+work to update the rendered HTML version of your homework.**
 
-Markdown is a very simple way of formatting text. You do not need to know
-anything about it except (1) R code blocks and (2) sections. R code blocks are
-what RStudio runs and prints the output of in your finalized RMarkdown
-document. These are formatted as:
+**Markdown:** Markdown is a very simple way of formatting text. You do not need
+to know anything about it except (1) R code blocks and (2) sections. R code
+blocks are what RStudio runs and prints the output of in your finalized
+RMarkdown document. These are formatted as:
 
 
     ```{R}
@@ -106,14 +120,20 @@ document. These are formatted as:
   
     ```
 
-When you're working with R and RStudio, it's easiest if you use the following
-workflow. Enter your code in the RMarkdown file's R code block (as above) and
-press command + shift + enter (Mac) or control + shift + enter (Windows) to run
-all code in that chunk. If you want to run a single R code line, use command +
-enter (Mac) or control + enter (Windows) with your cursor on the line you want
-to run. In either case, the lines you sent to R and the output they created
-will be sent to the R console window in RStudio (**these do not appear in your
-RMarkdown document until you knit it**). 
+**RMarkdown cheatsheet:** If you're curious of other Markdown formatting
+options like **bold** and *italics*, or just want need additional help with
+RMarkdown, see the [RMarkdown
+cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).
+
+**Workflow and keyboard shortcuts:** When you're working with R and RStudio,
+it's easiest if you use the following workflow. Enter your code in the
+RMarkdown file's R code block (as above) and press command + shift + enter
+(Mac) or control + shift + enter (Windows) to run all code in that chunk. If
+you want to run a single R code line, use command + enter (Mac) or control +
+enter (Windows) with your cursor on the line you want to run. In either case,
+the lines you sent to R and the output they created will be sent to the R
+console window in RStudio (**these do not appear in your RMarkdown document
+until you knit it**). 
 
 Occasionally it's easiest to work directly in the R console window. Just
 remember that any work done directly in the R console does not get saved unless
@@ -214,7 +234,7 @@ length(6)
 ```
 try this with other numbers like `2.1`, `1e-9`, etc. (which uses scientific notation).
 
-Numbers don't have lengths --- vectors do. We make longer vectors by
+Numbers don't have lengths --- only vectors do. We make longer vectors by
 concatenating other vectors together using the function `c()`. We'll discuss
 functions in more depth later on, but for now, just note that we make vectors
 like:
@@ -306,13 +326,25 @@ typeof(a)
 ```
 
 **Implicit type coercion is a common source of problems for new R users, so
-check vector types with `typeof()`**. 
-
-You can also coerce types with functions like `as.numeric()`, `as.integer()`,
-`as.character()`, etc.:
+check vector types with `typeof()`**. For example, if you accidentally try to
+concatenate a character vector with a numeric vector, everything becomes a
+character vector. An example of this problem is:
 
 ```{R}
-as.numeric("4123.412") + 23.1
+a <- c(1, 4, 2)
+b <- c("43")
+d <- c(a, b)
+sum(d)  # error
+```
+
+You can also coerce types with functions like `as.numeric()`, `as.integer()`,
+`as.character()`, etc. To fix the error above, you'd want to coerce the vector
+`b` to a numeric vector:
+
+```{R}
+b <- as.numeric(b)
+d <- c(a, b)
+sum(d)
 ```
 
 ## Functions I: Calling Functions
@@ -547,8 +579,9 @@ during programming is [generally
 bad](https://en.wikipedia.org/wiki/Copy_and_paste_programming)).
 
 For example, through this tutorial, we've had to repeat our code to calculate
-Hardy-Weinberg multiple times. Let's solve this by writing a function that
-takes an allele frequency, and returns a vector of the genotype frequencies:
+Hardy-Weinberg genotype frequencies from an allele frequency multiple times.
+Let's solve this by writing a function that takes an allele frequency, and
+returns a vector of the genotype frequencies:
 
 ```{R}
 hw <- function(p) {
@@ -563,38 +596,250 @@ Then, we can call our function as we do any other function:
 hw(0.3)
 ```
 
-We can also create optional arguments by specify a default value for a
-parameter. For example, we could write another version of the `hw()` function
-that takes an F value (e.g. generalized Hardy-Weinberg):
+Do be aware of the fact that depending on how you write your functions, they
+may not be vectorized. For example, if we had a vector of multiple  allele
+frequencies, this version of the function wouldn't work the way we want it too:
 
 ```{R}
-hw <- function(p, F=0) {
-  props <- c(p*F + (1-F)*p^2, (1-F)*2*p*(1-p), (1-p)*F + (1-F)*(1-p)^2)
+freqs <- c(0.01, 0.5, 0.2)
+hw(freqs)
+```
+
+Note how this is wrong `c()` is concatenating everything, when we want genotype
+frequencies *per* allele frequency, e.g. each row corresponds to the genotype
+frequencies of one allele. This implies we need a 2D data structure like a
+*matrix*. We can create a matrix with the `matrix()` function, but since we
+want to turn the frequencies of AA, Aa, and aa into columns, an easier way is
+to `cbind()` these together. `cbind()` takes vectors of the same length, and
+binds them together by column (hence the "c" in `cbind()`); there is also
+`rbind()` to bind by rows. To pretty output, we can specify column names like
+AA, Aa, aa:
+
+```{R}
+hw2 <- function(p) {
+  props <- cbind(AA=p^2, Aa=2*p*(1-p), aa=(1-p)^2)
   return(props)
 }
+freqs <- c(0.01, 0.5, 0.2)
+gfreqs <- hw2(freqs)
+gfreqs
 ```
 
-Note that if `F=0` (the default), this simplifies to something identical to our
-previous `hw()` function. If we call `hw()` with only one argument, this is
-what happens:
+This returns a matrix where columns are the frequencies of particular genotype
+(e.g. AA, Aa, aa) across allele frequencies, and rows are genotype frequencies
+across alleles. Specific entries of a matrix can be access with subsetting very
+similar to subsetting a vector, except there are two indices: rows, and
+columns. To access the Aa genotype frequency (second column) for the first row,
+we use 
+
+```{r}
+gfreqs[1, 2]
+```
+
+similarly, for for the first row, third column:
+
+```{r}
+gfreqs[1, 3]
+```
+
+We can access an entire row by omitting the second index (but do keep comma).
+For example, to access the second row:
 
 ```{R}
-hw(0.3)  # identical to previous results
-hw(0.3, F=0.1)  # note the deficiency of heterozygotes
+gfreqs[2, ]
 ```
 
-## Data Structures II: Lists, DataFrames and Reading in Data
+Similarly, for columns, omit the first index (but do keep comma). To access the
+entire second column:
 
-### Subsetting DataFrames
+```{r}
+gfreqs[, 2]
+```
 
-Accessing Columns
+Like vectors, matrices only store one data type (technically, R's matrices
+*are* R's vectors, just with a dimension). 
+
+## Data Structures II: DataFrames and Reading in Data
+
+We often need to work with data of different types (e.g. character and
+numeric), meaning that vectors and matrices won't work, since they can only
+store data of one type. R's two dimensional data structure for data of
+different types is the **dataframe**. You can create a dataframe by calling the
+`data.frame()` function, providing the columns to make the dataframe from. For
+example, if we wanted a dataframe containing the two alleles at a few loci, and
+the frequency of the first allele, we could create it with something like the
+following (note this data is made up):
 
 ```{R}
-
+loci <- data.frame(allele_1 = c('A', 'T', 'T'),
+                   allele_2 = c('C', 'A', 'G'),
+                   freq = c(0.01, 0.3, 0.91))
+loci
 ```
 
+### Subsetting Dataframes 
 
+We can access the columns of a dataframe just as we did with a matric, using
+their position. For example, to access the third column:
 
+```{R}
+loci[, 3]
+```
+
+Similarly, we can can access specific rows this way too (e.g. to access the
+third row, use `loci[3, ]`) and specific elements (e.g. to access the first
+row, third column `loci[1, 3]`). Usually when working with dataframes, we just
+need to access specific columns. While we could access columns by their their
+position, it's easier (and makes code more readable) if we access them by their
+column name. The easiest way to do this is to use the `$` operator, e.g.:
+
+```{R}
+loci$freq
+```
+
+Note that we can add columns to a dataframe this way too. For example, to add
+the heterozygosity:
+
+```{r}
+loci$het <- 2*loci$freq*(1-loci$freq)
+```
+
+Study this carefully, as we'll use this a lot. It's often useful to append
+columns containing calculations to your dataframe, as it stores everything
+together.
+
+### Loading Data into R
+
+We often need to load data into R from an outside source. For this course, all
+datasets are built into the `eve102` package. Since learning to load data into
+R is a valuable skill you should learn, the data is stored in tab-separated
+value (TSV) files within the package. Depending on your system (Mac, Windows,
+or Linux), this data may live in different places, so to find the file path to
+the data, use the function `eve102_data()`. Calling this function without
+arguments returns all datasets:
+
+```R
+> library(eve102)
+> eve102_data()
+  id                 file                                     description
+1  1     CEU_10000.txt.gz             10,000 HapMap SNPs, CEU individuals
+2  2 CEU_YRI_10000.txt.gz     10,000 HapMap SNPs, CEU and YRI individuals
+3  3     YRI_10000.txt.gz             10,000 HapMap SNPs, YRI individuals
+>
+```
+
+Then, you can get the file path for one of these files by calling the
+`eve102_data()` function, providing the filename you wish to get the path to:
+
+```R
+> eve102_data("CEU_10000.txt.gz")
+[1] "/usr/local/lib/R/3.3/site-library/eve102/extdata/CEU_10000.txt.gz"
+```
+
+This can then be used to load data in with R's `read.table()` function (since
+this is in tab-separated value format).
+
+```R
+> d <- read.table(eve102_data("CEU_10000.txt.gz"), header=TRUE)
+> head(d)
+  chr           snp allele_A allele_a AA Aa aa  freq total
+1   1 SNP_A-1909444        T        C 40 19  1 0.825    60
+2   1 SNP_A-2237149        0        G  0  0 60 0.000    60
+3   1 SNP_A-4303947        A        G 45 15  0 0.875    60
+4   1 SNP_A-1886933        T        C  0 15 45 0.125    60
+5   1 SNP_A-2236359        A        0 60  0  0 1.000    60
+6   1 SNP_A-2205441        0        C  0  0 60 0.000    60
+```
+
+By default, R turns all character vectors from a data file into *factors* when
+loading data through `read.table()` (and sister functions like `read.csv()` for
+CSV files). Factors are useful for statistical modeling, when character vectors
+correspond to categorical or ordinal data like "yes", "no", or "high",
+"medium", "low". Usually in this course, we don't want R to automatically
+converting character vectors to factors, so we can pass the argument
+`stringsAsFactors=FALSE` to `read.table()` (note: string is a computer science
+term for character data):
+
+```{r}
+d <- read.table(eve102_data("CEU_10000.txt.gz"), header=TRUE,
+                stringsAsFactors=FALSE)
+```
 
 ## Simple Plotting
+
+Finally, we cover some simple plotting functions. One of R's greatest strengths
+is its ability to visualize data. We'll learn the basics of R's built in
+graphics (known as *base graphics*), but if you continue to learn more R you
+may want to learn about another graphics package known as
+[ggplot2](http://ggplot2.org/).
+
+### The `plot()` function
+
+The simplest way to plot data is with the `plot()` function. `plot()` takes
+care of creating a new plotting window, setting up the plot limits (the
+dimensions of the x and y axes), and plotting points, lines, etc. We'll start
+out with a simple introduction, and then add more complexity. Let's try a basic
+scatter plot. We'll use the famous Iris dataset collected from Anderson (1935),
+and discussed by Fisher (1936; the same Fisher that created much of early
+population genetic, quantitative genetic, and statistical theory). This dataset
+is built into R, and contains petal and sepal measurements for three species of
+Irises. We can take a peak at it's contents with the `head()` function:
+
+```{R}
+head(iris)
+```
+
+Let's plot the sepal lengths (column `Sepal.Length`) on the x-axis and petal
+lengths (column `Petal.Length`) on the y-axis. In its simplest form, `plot()`
+takes a vector of x-coordinates and a vector of y-coordinates, like so:
+
+
+```{R}
+plot(iris$Sepal.Length, iris$Petal.Length)
+```
+
+We can adjust multiple aspects of this plot by providing additional arguments
+to `plot()`. Here are some commonly used options:
+
+ - `pch`: plotting character, which changes the character from the default of
+an open circle. A commonly used alternative is `pch=19`, which is a closed circle.
+
+ - `col`: color, which is the color to plot the points in. These can be
+provided by name, e.g. "dark green" or a [hexadecimal
+value](http://htmlcolorcodes.com/). See [this
+document](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) for some R
+color names.
+
+ - `cex`: character expansion, which changes the size of the point plotted. 
+
+ - `ylim`, `xlim`: the y-axis and x-axis plotting limits. These are useful for
+plotting genotype and allele frequencies, which we know can only take values
+between 0 and 1.
+
+ - `ylab`, `xlab`: the y-axis and x-axis labels. Always label your axes!
+
+Let's look at a quick example of these options in action, using the built in
+data set we loaded above (you'll use for your homework). Let's plot the allele
+frequencies (column `freq`) by the frequency of heterozygotes, which is the
+`Aa` column of counts divided by the `total` column:
+
+```{R}
+d <- read.table(eve102_data("CEU_10000.txt.gz"), header=TRUE,
+                stringsAsFactors=FALSE)
+plot(d$freq, d$Aa/d$total)
+```
+
+This is a mediocre plot: it's not very pretty, axis labels aren't helpful, etc.
+Let's clean it up a bit using the options discussed above:
+
+```{R}
+plot(d$freq, d$Aa/d$total, pch=19, cex=0.5, col="dark green",
+     ylim=c(0, 1), xlim=c(0, 1), xlab="allele frequency",
+     ylab="heterozygote frequency")
+```
+
+### Overlaying points and lines on top of plots
+
+
+
 

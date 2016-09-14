@@ -2,7 +2,9 @@
 title: "EVE102 R Tutorial, Part I"
 author: "Vince Buffalo"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    toc: true
 vignette: >
   %\VignetteIndexEntry{R Tutorial, Part I}
   %\VignetteEngine{knitr::rmarkdown}

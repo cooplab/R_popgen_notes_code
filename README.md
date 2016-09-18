@@ -3,7 +3,7 @@
 To install this package, copy and paste the following into R:
 
 ```R
-install.packages("devtools")
+install.packages("devtools", dependencies=TRUE)
 library(devtools)
 install_github("vsbuffalo/eve102", build_vignettes=TRUE)
 ```

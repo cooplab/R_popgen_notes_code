@@ -1,5 +1,21 @@
 ## EVE102 R Package: R Course Materials for Population Genetics
 
+To install this package, copy and paste the following into R:
+
+```R
+install.packages("devtools")
+install_github("vsbuffalo/eve102", build_vignettes=TRUE)
+```
+
+Then, try the following:
+
+```R
+library(eve102)
+tutorials()
+```
+
+which should open up a list of tutorials in your browser.
+
 ## Accessing the R Tutorials
 
 The R tutorials for this course are contained in this package. These will open

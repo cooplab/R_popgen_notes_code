@@ -43,5 +43,5 @@ eve102_status <- function() {
 #' 
 #' @export
 eve102_update <- function() {
-  devtools::install_github(OWNER_REPO)
+  devtools::install_github(OWNER_REPO, build_vignettes=TRUE)
 }

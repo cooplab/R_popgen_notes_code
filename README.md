@@ -4,6 +4,7 @@ To install this package, copy and paste the following into R:
 
 ```R
 install.packages("devtools")
+library(devtools)
 install_github("vsbuffalo/eve102", build_vignettes=TRUE)
 ```
 

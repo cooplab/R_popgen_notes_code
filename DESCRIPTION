@@ -8,9 +8,9 @@ Depends: R (>= 3.0.0)
 License: BSD
 Encoding: UTF-8
 LazyData: true
-Imports: devtools
 Suggests: tidyr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    devtools
 RoxygenNote: 5.0.1
 VignetteBuilder: knitr

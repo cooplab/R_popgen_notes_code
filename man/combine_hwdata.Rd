@@ -4,7 +4,7 @@
 \alias{combine_hwdata}
 \title{Combine data}
 \usage{
-combine_hwdata()
+combine_hwdata(flip = TRUE)
 }
 \description{
 Combine all counts into one dataframe.
@@ -12,7 +12,7 @@ Combine all counts into one dataframe.
 \examples{
 \dontrun{
  write.table(combine_hwdata(),
-   file=file.path("inst", "extdata", "combined.YRICEU.txt"),
+   file=file.path("inst", "extdata", "combined_YRICEU.txt"),
    quote=FALSE, row.names=FALSE, sep="\\t")
 }
 }

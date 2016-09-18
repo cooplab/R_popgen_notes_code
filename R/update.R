@@ -1,6 +1,6 @@
 ## update.R -- check for updates
 
-# OWNER_REPO <- 'vsbuffalo/eve102'
+OWNER_REPO <- 'vsbuffalo/eve102'
 
 #' Check GitHub to see if the eve102 package is out of date.
 #'

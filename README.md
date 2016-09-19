@@ -1,11 +1,15 @@
-## EVE102 R Package: R Course Materials for Population Genetics
+## EVE102 Package: R Course Materials for Population Genetics
 
-**Time**: Monday, Wednesday, Friday 10am-10:50am
-**Location**: Hart Hall 1150
-**Instructor**: Graham Coop, 3342A Storer Hall, gmcoop [at] ucdavis [dot] edu
-**Office Hour**: 11am-12pm Wednesday. 3342A Storer Hall 
-**Teaching assistant**: Vince Buffalo, vsbuffalo [at] ucdavis [dot] edu 
-**Office Hour**: Thursday 10-11am. 2342 Storer Hall
+|                    |                                                               |
+|--------------------|---------------------------------------------------------------|
+|**Time** | Monday, Wednesday, Friday 10am-10:50am | 
+|**Location** | Hart Hall 1150 |
+|**Instructor** | Graham Coop, 3342A Storer Hall, gmcoop [at] ucdavis [dot] edu |
+|**Instructor Office Hour** | 11am-12pm Wednesday, 3342A Storer Hall |
+|**Teaching assistant** | Vince Buffalo, vsbuffalo [at] ucdavis [dot] edu |
+|**TA Office Hour** | Thursday 10-11am, 2342 Storer Hall |
+
+<br/>
 
 This R package contains data, functions, and documentation for EVE102, Population
 Genetics. The documentation is available in the R package itself (see below), or at the 

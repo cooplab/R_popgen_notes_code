@@ -31,48 +31,6 @@ are:
  - [The Art of R Programming](http://heather.cs.ucdavis.edu/~matloff/132/NSPpart.pdf) by Norman Matloff (UC Davis computer science professor). 
  - [Advanced R](http://adv-r.had.co.nz) by Hadley Wickham. This is a great online resource (and now, [published book](https://www.amazon.com/dp/1466586966/ref=cm_sw_su_dp?tag=devtools-20)).
 
-
-## Requirements
-
-First, we need to install R, RStudio, and a few R packages. Follow these steps:
-
-1. **Download R and Install R**. R is available from the "Comprehensive R
-Archive Network" (CRAN): https://cran.cnr.berkeley.edu/. Download the version
-for your operating system using this link. Install R by double clicking the
-installer you've downloaded in the previous step and follow the instructions.
-CRAN is also how you install packages that extend R's functionality (more on
-this later).
-
-2. **Download and install RStudio**. RStudio is a program that makes
-interacting with and developing code in R *much* easier. Download RStudio
-Desktop from their website:
-https://www.rstudio.com/products/rstudio/download3/. Double click the RStudio
-installer and follow the installation instructions.
-
-Open RStudio and try entering:
-
-```{R, eval=FALSE}
-print("Welcome to EVE102!")
-```
-
-in the window labeled "Console". It should look something like this (but your
-exact session will be different):
-
-<img src="images/rstudio.png" style="width: 600px;"/>
-
-3. Next, we need to install a few R packages from CRAN. R packages are
-contributed software that extends the functionality of R. We will first install
-`devtools`, as this allows us to install the `eve102` course package from
-GitHub (GitHub is a website for sharing code and collaboratively working on
-projects). Then, we will load the `devtools` package with the `library()`
-function, and then install the `eve102`:
-
-```{R, eval=FALSE}
-install.packages('devtools')
-library(devtools)
-install_github('vsbuffalo/eve102', build_vignettes=TRUE)
-```
-
 ## Tracking Your Work: R Scripts and R Markdown
 
 To turn in your R homework assignments, we would like you to use RMarkdown.

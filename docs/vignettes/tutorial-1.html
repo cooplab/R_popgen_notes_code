@@ -274,7 +274,7 @@ d &lt;-<span class="st"> </span><span class="kw">c</span>(a, b)
         x[sample.int(length(x), size, replace, prob)]
     }
 }
-&lt;bytecode: 0x7feaaee6d778&gt;
+&lt;bytecode: 0x7fd302701ad0&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>Don’t worry about the specifics here; just note the arguments on the first line. These are: <code>x, size, replace = FALSE, prob = NULL</code>.</p>
 <p>To take multiple samples (such that we’re <em>resampling</em> the <code>genotypes</code> vector multiple times), we need to <em>sample with replacement</em>. This allows the same value to be sampled multiple times. We specify this by supplying the argument <code>TRUE</code> to the third argument of <code>sample()</code>:</p>

@@ -1,5 +1,17 @@
 ## EVE102 R Package: R Course Materials for Population Genetics
 
+**Time**: Monday, Wednesday, Friday 10am-10:50am
+**Location**: Hart Hall 1150
+**Instructor**: Graham Coop, 3342A Storer Hall, gmcoop [at] ucdavis [dot] edu
+**Office Hour**: 11am-12pm Wednesday. 3342A Storer Hall 
+**Teaching assistant**: Vince Buffalo, vsbuffalo [at] ucdavis [dot] edu 
+**Office Hour**: Thursday 10-11am. 2342 Storer Hall
+
+This R package contains data, functions, and documentation for EVE102, Population
+Genetics. The documentation is available in the R package itself (see below), or at the 
+R package website: https://vsbuffalo.github.io/eve102/
+
+## Installing This R Package
 To install this package, copy and paste the following into R:
 
 ```R
@@ -16,6 +28,21 @@ tutorials()
 ```
 
 which should open up a list of tutorials in your browser.
+
+## Updating this Package
+
+Throughout the course, we will make updates to this package and documentation.
+You can always check if your `eve102` course package is up to date with:
+
+```R
+eve102_status()
+```
+
+If your package is out of date, update it with:
+
+```R
+eve102_update()
+```
 
 ## Accessing the R Tutorials
 

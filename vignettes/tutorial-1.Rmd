@@ -16,21 +16,6 @@ library(eve102)
 knitr::opts_chunk$set(prompt=FALSE, comment="", fig.width=6, fig.height=6)
 ```
 
-R is a programming language designed for statistical computing. It allows you
-to do incredibly powerful data manipulation, fit statistical models, and
-visualize data. R has grown incredibly popular in recent years (e.g., see this
-[New York Times
-articles](http://www.nytimes.com/2009/01/07/technology/business-computing/07program.html?pagewanted=all&_r=0)
-on R), and is the foundation of most of modern data science. We'll use R in
-this course, and while at times it may be tricky (learning new programming
-languages is *always* tricky), it's worth the effort as knowing R is a very
-marketable skill. We'll cover the basics here, but other excellent references
-are:
-
- - [R in a Nutshell](http://proquest.safaribooksonline.com/book/programming/r/9781449358204) by Joseph Alder. Available online through the UC Davis campus proxy.
- - [The Art of R Programming](http://heather.cs.ucdavis.edu/~matloff/132/NSPpart.pdf) by Norman Matloff (UC Davis computer science professor). 
- - [Advanced R](http://adv-r.had.co.nz) by Hadley Wickham. This is a great online resource (and now, [published book](https://www.amazon.com/dp/1466586966/ref=cm_sw_su_dp?tag=devtools-20)).
-
 ## Tracking Your Work: R Scripts and R Markdown
 
 To turn in your R homework assignments, we would like you to use RMarkdown.

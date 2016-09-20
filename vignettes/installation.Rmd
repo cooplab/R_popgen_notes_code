@@ -3,8 +3,7 @@ title: "R Requirements and Installation Instructions"
 author: "Vince Buffalo"
 date: "`r Sys.Date()`"
 output: 
-  rmarkdown::html_vignette:
-    toc: true
+  rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{R Requirements and Installation Instructions}
   %\VignetteEngine{knitr::rmarkdown}

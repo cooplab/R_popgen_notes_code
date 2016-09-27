@@ -48,42 +48,42 @@ tidy_hwdata <- function(file, flip=TRUE) {
   return(d[, c(1:7, 12, 11)])
 }
 
-## Run to regenerate files:
-# files <- sapply(RAWFILES, eve102_data, include_raw=TRUE)
-# for (i in seq_along(files)) {
-#   outfile <- file.path("inst", "extdata", paste0(names(files)[i], ".txt.gz"))
-#   outcon <- gzfile(outfile, "w")
-#   write.table(tidy_hwdata(file.path("inst", "extdata", basename(files[i]))), 
-#               file=outcon, sep="\t", quote=FALSE, row.names=FALSE)
-#   close(outcon)
-# }
+# ## Run to regenerate files:
+# # files <- sapply(RAWFILES, eve102_data, include_raw=TRUE)
+# # for (i in seq_along(files)) {
+# #   outfile <- file.path("inst", "extdata", paste0(names(files)[i], ".txt.gz"))
+# #   outcon <- gzfile(outfile, "w")
+# #   write.table(tidy_hwdata(file.path("inst", "extdata", basename(files[i]))), 
+# #               file=outcon, sep="\t", quote=FALSE, row.names=FALSE)
+# #   close(outcon)
+# # }
 
-#' Combine data
-#'
-#' Combine all counts into one dataframe.
-#' @examples 
-#' \dontrun{
-#'  write.table(combine_hwdata(),
-#'    file=file.path("inst", "extdata", "combined_YRICEU.txt"),
-#'    quote=FALSE, row.names=FALSE, sep="\t")
-#' }
-combine_hwdata <- function(flip=TRUE) {
-  keep_cols <- c("snp", "allele_a", "allele_A", "AA", "Aa", "aa", "total")
-  df_ceu <- tidy_hwdata(eve102_data('CEU_10000.hw.gz', include_raw=TRUE), 
-                        flip=FALSE)[, keep_cols]
-  df_yri <- tidy_hwdata(eve102_data('YRI_10000.hw.gz', include_raw=TRUE),
-                        flip=FALSE)[, keep_cols]
-  common_snps <- unique(c(df_ceu$snp, df_yri$snp))
-  jj = merge(df_ceu, df_yri, by='snp', suffixes=c("_CEU", "_YRI"))[, -c(8,9)]
-  colnames(jj)[2:3] <- c('allele_a', 'allele_A')
-  if (flip) {
-    jj$flip <- rep_len(1:2, nrow(jj))  # recycling not working for myserious reason
-    parts <- split(jj, jj$flip)
-    # flip alleles & genotypes columns, restore original column names
-    parts[[1]] <- setNames(parts[[1]][, c(1, 3, 2, 6, 5, 4, 7, 10, 9, 8, 11, 12)],
-                           colnames(parts[[1]]))
-    jj <- unsplit(parts, jj$flip)[, -12]  # drop flip col
-  }
-  return(jj)
-}
+# #' Combine data
+# #'
+# #' Combine all counts into one dataframe.
+# #' @examples 
+# #' \dontrun{
+# #'  write.table(combine_hwdata(),
+# #'    file=file.path("inst", "extdata", "combined_YRICEU.txt"),
+# #'    quote=FALSE, row.names=FALSE, sep="\t")
+# #' }
+# combine_hwdata <- function(flip=TRUE) {
+#   keep_cols <- c("snp", "allele_a", "allele_A", "AA", "Aa", "aa", "total")
+#   df_ceu <- tidy_hwdata(eve102_data('CEU_10000.hw.gz', include_raw=TRUE), 
+#                         flip=FALSE)[, keep_cols]
+#   df_yri <- tidy_hwdata(eve102_data('YRI_10000.hw.gz', include_raw=TRUE),
+#                         flip=FALSE)[, keep_cols]
+#   common_snps <- unique(c(df_ceu$snp, df_yri$snp))
+#   jj = merge(df_ceu, df_yri, by='snp', suffixes=c("_CEU", "_YRI"))[, -c(8,9)]
+#   colnames(jj)[2:3] <- c('allele_a', 'allele_A')
+#   if (flip) {
+#     jj$flip <- rep_len(1:2, nrow(jj))  # recycling not working for myserious reason
+#     parts <- split(jj, jj$flip)
+#     # flip alleles & genotypes columns, restore original column names
+#     parts[[1]] <- setNames(parts[[1]][, c(1, 3, 2, 6, 5, 4, 7, 10, 9, 8, 11, 12)],
+#                            colnames(parts[[1]]))
+#     jj <- unsplit(parts, jj$flip)[, -12]  # drop flip col
+#   }
+#   return(jj)
+# }
 

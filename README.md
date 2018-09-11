@@ -2,18 +2,18 @@
 
 |                    |                                                               |
 |--------------------|---------------------------------------------------------------|
-|**Time** | Monday, Wednesday, Friday 10am-10:50am | 
-|**Location** | Hart Hall 1150 |
+|**Lecture Time** | Monday, Wednesday, Friday 10am-10:50am | 
+|**Location** | Olson Hall 158 |
+|**Discussion Sections** | Tuesday 10am-10:50am/12:10pm-1pm, 2342 Storer Hall |
 |**Instructor** | Graham Coop, 3342A Storer Hall, gmcoop [at] ucdavis [dot] edu |
-|**Instructor Office Hour** | 11am-12pm Wednesday, 3342A Storer Hall |
-|**Teaching assistant** | Vince Buffalo, vsbuffalo [at] ucdavis [dot] edu |
-|**TA Office Hour** | Thursday 10-11am, 2342 Storer Hall |
+|**Instructor Office Hour** | TBA, 3342A Storer Hall |
+|**Teaching Assistant** | Erin Calfee, ecalfee [at] ucdavis [dot] edu |
+|**TA Office Hour** | TBA |
 
 <br/>
 
 This R package contains data, functions, and documentation for EVE102, Population
-Genetics. The documentation is available in the R package itself (see below), or at the 
-R package website: https://vsbuffalo.github.io/eve102/
+Genetics.
 
 ## Installing This R Package
 To install this package, copy and paste the following into R:
@@ -21,7 +21,7 @@ To install this package, copy and paste the following into R:
 ```R
 install.packages("devtools", dependencies=TRUE)
 library(devtools)
-install_github("vsbuffalo/eve102", build_vignettes=TRUE)
+install_github("cooplab/eve102", build_vignettes=TRUE)
 ```
 
 Then, try the following:

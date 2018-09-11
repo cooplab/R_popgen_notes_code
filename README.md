@@ -15,6 +15,37 @@
 This R package contains data, functions, and documentation for EVE102, Population
 Genetics.
 
+## Installing R and RStudio
+
+To use the EVE102 R package, you will need to first download and install R 
+and RStudio. If you already have up-to-date versions of R and RStudio, you 
+may skip to the section 'Installing This R Package' below.
+
+1. **Download R and Install R**. R is available from the "Comprehensive R
+Archive Network" (CRAN): https://cran.cnr.berkeley.edu/. Download the version
+for your operating system using this link. Install R by double clicking the
+installer you've downloaded in the previous step and follow the instructions.
+CRAN is also how you install packages that extend R's functionality (more on
+this later).
+
+2. **Download and install RStudio**. RStudio is a program that makes
+interacting with and developing code in R *much* easier. Download RStudio
+Desktop from their website:
+https://www.rstudio.com/products/rstudio/download3/. Double click the RStudio
+installer and follow the installation instructions.
+
+Open RStudio and try entering:
+
+```{R, eval=FALSE}
+print("Welcome to EVE102!")
+```
+
+in the window labeled "Console". It should look something like this (but your
+exact session will be different):
+
+<img src="vignettes/images/rstudio.png" style="width: 600px;"/>
+
+
 ## Installing This R Package
 To install this package, copy and paste the following into R:
 

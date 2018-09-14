@@ -4,11 +4,11 @@
 |--------------------|---------------------------------------------------------------|
 |**Lecture Time** | Monday, Wednesday, Friday 10am-10:50am | 
 |**Location** | Olson Hall 158 |
-|**Discussion Sections** | Tuesday 10am-10:50am/12:10pm-1pm, 2342 Storer Hall |
+|**Discussion Sections** | Tuesday 9am-9:50am/12:10pm-1pm, 2342 Storer Hall |
 |**Instructor** | Graham Coop, 3342A Storer Hall, gmcoop [at] ucdavis [dot] edu |
 |**Instructor Office Hour** | TBA, 3342A Storer Hall |
 |**Teaching Assistant** | Erin Calfee, ecalfee [at] ucdavis [dot] edu |
-|**TA Office Hour** | TBA |
+|**TA Office Hour** | Wednesday 11am-11:50am, 2342 Storer Hall |
 
 <br/>
 

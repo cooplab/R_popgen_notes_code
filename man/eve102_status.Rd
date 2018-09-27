@@ -18,3 +18,4 @@ each time you knit your RMarkdown files will make many unnecessary requests
 to GitHub. Check by entering \code{eve102_status()} directly in your terminal
 only.
 }
+

@@ -14,3 +14,4 @@ Running \code{tutorials()} without arguments opens a list of all
 available EVE102 tutorials. Entering a specific \code{num} opens that
 tutorial.
 }
+

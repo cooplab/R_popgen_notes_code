@@ -1,6 +1,6 @@
 Package: eve102
 Title: Functions and Datasets for EVE102: Population Genetics
-Version: 0.0.1.0
+Version: 0.2.0.0
 Authors@R: 'Vince Buffalo <vsbuffaloAAAAA@gmail.com> [aut, cre]'
 Description: This package contains functions for manipulating data for the
     exercises for EVE102, as well as the datasets required for the course.

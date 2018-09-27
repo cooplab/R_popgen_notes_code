@@ -10,4 +10,3 @@ eve102_update()
 Calling this function updates the eve102 package to the latest version on
 GitHub.
 }
-

@@ -12,5 +12,5 @@ Imports: devtools
 Suggests: tidyr,
     knitr,
     rmarkdown
-RoxygenNote: 6.1.0
+RoxygenNote: 5.0.1
 VignetteBuilder: knitr

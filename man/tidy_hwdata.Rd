@@ -22,4 +22,3 @@ For extracting the genotype counts from the original raw data from PLINK.
  }
 }
 }
-

@@ -6,5 +6,5 @@ CEU_10000.hw.gz	            ~10,000 HapMap SNPs, CEU individuals	TRUE
 CEU_YRI_10000.hw.gz	    ~10,000 HapMap SNPs, CEU and YRI individuals	TRUE
 YRI_10000.hw.gz	            ~10,000 HapMap SNPs, YRI individuals	TRUE
 combined_YRICEU.txt.gz	    ~10,000 HapMap SNPs, combined CEU and YRI genotype counts	FALSE
-made_up_individuals.txt	genotypes for 4 made up individuals from different pops	FALSE
-galton_height_data.txt	Galton's 1886 heights, Harvard Dataverse https://doi.org/10.7910/DVN/T0HSJ1	FALSE
+made_up_individuals.txt	genotypes of 4 made up individuals from different pops	FALSE
+galton_height_data.txt	Height data (Galton 1886), from Harvard Dataverse https://doi.org/10.7910/DVN/T0HSJ1	FALSE

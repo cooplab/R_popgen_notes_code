@@ -65,7 +65,7 @@ exact session will be different):
    working on projects). Then, we will load the `devtools` package with the
    `library()` function, and then install the `eve102` package. Note that if
    you are prompted to answer any questions during installation, answer the
-   affirmative, i.e. 'y' or yes. Run the following (i.e. copy and paste, then run):
+   affirmative, i.e. 'y' or yes. Run the following (i.e. copy and paste):
 
 ```{R, eval=FALSE}
 install.packages('devtools')
@@ -73,7 +73,7 @@ library(devtools)
 install_github('cooplab/eve102', build_vignettes=TRUE)
 ```
 
-4. Finally, test if your eve102 package is working. Run the following (i.e. copy and paste, then run):
+4. Finally, test if your eve102 package is working. Run the following (i.e. copy and paste):
 ```{R, eval=FALSE}
 library(eve102) # run this code to load the library/'package'
 eve102_status() # should say 'Your eve102 package is the same version as on GitHub'

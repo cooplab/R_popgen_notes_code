@@ -1,6 +1,6 @@
 ---
 title: "R Requirements and Installation Instructions"
-author: "Vince Buffalo"
+author: "EVE102"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette

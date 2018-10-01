@@ -63,9 +63,9 @@ exact session will be different):
    install `devtools`, as this allows us to install the `eve102` course package
    from GitHub (GitHub is a website for sharing code and collaboratively
    working on projects). Then, we will load the `devtools` package with the
-   `library()` function, and then install the `eve102` package. Note that if
+   `library()` function, and then install the `eve102` package. Note that in general if
    you are prompted to answer any questions during installation, answer the
-   affirmative, i.e. 'y' or yes. Run the following (i.e. copy and paste):
+   affirmative, i.e. 'y' or yes, but see note in 'troubleshooting' section below about not saying yes to installing from 'source'. To install the `eve102` package, run the following (i.e. copy and paste):
 
 ```{R, eval=FALSE}
 install.packages('devtools')
@@ -80,3 +80,26 @@ eve102_status() # should say 'Your eve102 package is the same version as on GitH
 eve102_data() # should return names of the datasets available to you through the eve102 package
 # We will be using these datasets throughout the course & this list will get updated.
 ```
+
+## Troubleshooting ## 
+Having trouble with your installation? Please try the following, and if you still can't get everything installed, ask your TA.
+
+If R asks you whether you would like to install a 'source version' instead of an older 'binary version', say no. This could be phrased something like this:
+
+'There are binary versions available but the source versions
+  are later. Do you want to install from sources the packages which need compilation? y/n:'
+
+You should type 'n' then enter to install the *binary* versions.
+
+If you have used R before on your computer, please check that your R and RStudio versions are the latest available releases. You could have difficulty installing and using the `eve102` package if your R is out-of-date.
+
+You can find out what version of R you are using by typing copying and pasting the following into your console:
+
+version
+
+At time of writing this help file, the current version of R is 3.5.1 'Feather Spray'.
+
+You can find out what version of RStudio you have installed by clicking on *RStudio >> About* in the top menu bar. At the time of writing this help file, the current version of RStudio is 1.1.456.
+
+If your R or RStudio are out-of-date, simply close RStudio, install the latest version using the instructions above, and re-start RStudio. Then follow the instructions to install `devtools` and the `eve102` package.
+

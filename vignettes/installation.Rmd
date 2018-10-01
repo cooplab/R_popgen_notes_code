@@ -102,4 +102,3 @@ At time of writing this help file, the current version of R is 3.5.1 'Feather Sp
 You can find out what version of RStudio you have installed by clicking on *RStudio >> About* in the top menu bar. At the time of writing this help file, the current version of RStudio is 1.1.456.
 
 If your R or RStudio are out-of-date, simply close RStudio, install the latest version using the instructions above, and re-start RStudio. Then follow the instructions to install `devtools` and the `eve102` package.
-

@@ -1,19 +1,10 @@
 ## EVE102 Package: R Course Materials for Population Genetics
 
-|                    |                                                               |
-|--------------------|---------------------------------------------------------------|
-|**Lecture Time** | Monday, Wednesday, Friday 10am-10:50am | 
-|**Location** | Olson Hall 158 |
-|**Discussion Sections** | Tuesday 9am-9:50am/12:10pm-1pm, 2342 Storer Hall |
-|**Instructor** | Graham Coop, 3342A Storer Hall, gmcoop [at] ucdavis [dot] edu |
-|**Instructor Office Hour** | TBA, 3342A Storer Hall |
-|**Teaching Assistant** | Erin Calfee, ecalfee [at] ucdavis [dot] edu |
-|**TA Office Hour** | Wednesday 11am-11:50am, 2342 Storer Hall |
 
 <br/>
 
-This R package contains data, functions, and documentation for EVE102, Population
-Genetics.
+This R package contains data, functions, and documentation for Population
+and Quantitative Genetics. The R package is currently called EVE102
 
 ## Installing R and RStudio
 
@@ -22,7 +13,7 @@ and RStudio. If you already have up-to-date versions of R and RStudio, you
 may skip to the section 'Installing This R Package' below.
 
 1. **Download R and Install R**. R is available from the "Comprehensive R
-Archive Network" (CRAN): https://cran.cnr.berkeley.edu/. Download the version
+Archive Network" (CRAN): https://cran.rstudio.com/. Download the version
 for your operating system using this link. Install R by double clicking the
 installer you've downloaded in the previous step and follow the instructions.
 CRAN is also how you install packages that extend R's functionality (more on
@@ -37,7 +28,7 @@ installer and follow the installation instructions.
 Open RStudio and try entering:
 
 ```{R, eval=FALSE}
-print("Welcome to EVE102!")
+print("Welcome to Popbio")
 ```
 
 in the window labeled "Console". It should look something like this (but your
@@ -52,7 +43,7 @@ To install this package, copy and paste the following into R:
 ```R
 install.packages("devtools", dependencies=TRUE)
 library(devtools)
-install_github("cooplab/eve102", build_vignettes=TRUE)
+install_github("cooplab/R_popgen_notes_code", build_vignettes=TRUE)
 ```
 
 Then, try the following:

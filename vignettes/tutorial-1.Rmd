@@ -17,8 +17,7 @@ knitr::opts_chunk$set(prompt=FALSE, comment="", fig.width=6, fig.height=6)
 ```
 
 ## Tracking Your Work: R Scripts and R Markdown
-
-To turn in your R homework assignments, we would like you to use RMarkdown.
+One commmon way to write R code, e.g. for R homework assignments, is as a RMarkdown.
 RMarkdown is simple format that allows you to intermix R code and text
 explaining what you're doing. Here's how you do this:
 
@@ -28,7 +27,7 @@ explaining what you're doing. Here's how you do this:
 
     ```
     ---
-    title: "EVE 102 Homework 1"
+    title: "Homework 1"
     author: "Vince Buffalo"
     output: html_document
     ---

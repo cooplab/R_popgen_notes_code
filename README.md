@@ -34,7 +34,7 @@ print("Welcome to Popbio")
 in the window labeled "Console". It should look something like this (but your
 exact session will be different):
 
-<img src="vignettes/images/rstudio.png" style="width: 600px;"/>
+<img src="vignettes/images/rstudio_popbio.png" style="width: 600px;"/>
 
 
 ## Installing This R Package

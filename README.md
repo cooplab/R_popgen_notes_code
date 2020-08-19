@@ -1,10 +1,10 @@
-## EVE102 Package: R Course Materials for Population Genetics
+## R Course Materials for Population Genetics
 
 
 <br/>
 
-This R package contains data, functions, and documentation for Population
-and Quantitative Genetics. The R package is currently called EVE102
+This R package contains a few datasets, functions, and documentation for Population
+and Quantitative Genetics. The R package is currently called EVE102.
 
 ## Installing R and RStudio
 
